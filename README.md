@@ -1,67 +1,80 @@
-# SvgPathEditor
-Edit or create SVG paths in browser: https://yqnn.github.io/svg-path-editor/
-[![Image of Yaktocat](./doc/screenshot.png)](https://yqnn.github.io/svg-path-editor/)
+# SvgPathEditor (SVG路径代码编辑器)
+在浏览器中创建或编辑 SVG 路径代码: https://yhdsl.github.io/svg-path-editor/ (汉化版) 或 https://yqnn.github.io/svg-path-editor/ (原版)
+![Yaktocat 图像](./doc/screenshot.png)
 
-## How to Use
+---
 
-##### Basic:
-- Paste or edit the raw path in the **path** field
-- Click on **+** to add a new command to the path, select a type, then click on the destination
-- Move points with drag and drop
-- Click on a point, then on the **...** button to insert a command right after the selected one, to remove it, or to change its type
+## 关于此中文项目
 
-##### Commands panel:
-- Click on the command type to toggle between relative and absolute coordinates
-- Relative command types are **orange**, absolute are **purple**
-- Click on **...** then **Delete** to delete a command
-- Click on **...** then **Insert after** to insert a new command right after the selected one
-- Click on **...** then **Convert to** to convert the selected command to a new type
+[SvgPathEditor](https://github.com/Yqnn/svg-path-editor) 是一个界面友好，
+允许快速直观创建或编辑 SVG 路径代码的项目
 
-##### ViewBox:
-- Use mouse wheel, or click **Zoom in** and **Zoom out** to zoom in/out
-- Use drag & drop to move the viewBox
-- Click on **Zoom to Fit** to automatically set the viewBox depending on current path
-- ViewBox can also be set manually with the **x**, **y**, **width** and **height** fields
+但由于 SvgPathEditor 项目并不支持 i18n，
+我手动修改了项目内硬编码的文本，
+将前端页面更改为了中文页面
 
-##### Path operations:
-- Scale the full path with the **Scale** button
-- Translate the full path with the **Translate** button
-- Rotate the full path with the **Rotate** button
-- Round all coordinates of the current path with the **Round** button
-- Convert all commands to relative or absolute coordinates with **Convert to relative** or **Convert to absolute** button
+---
 
-##### Shortcuts:
-- Press **m**, **l**, **v**, **h**, **c**, **s**, **q**, **t**, **a** or **z** to insert a command after the selected one
-- Press **shift** + **m**, **l**, **v**, **h**, **c**, **s**, **q**, **t**, **a** or **z** to convert selected command to a new type
-- Press **echap** to delete the command being created, or the undo the current dragging operation
-- Press **delete** or **backspace** to delete the selected command
-- Press **ctrl** + **z** or **cmd** + **z** to undo
-- Press **ctrl** + **shift** + **z** or **cmd** + **shift** + **z** to redo
-- Press **ctrl** while dragging to ignore `snap to grid` constraint
+## 如何使用
 
-## Running Locally
+##### 基础:
+- 在 **路径代码** 区域粘贴或编辑原始路径代码
+- 点击 **+** 按钮添加新的命令、选择命令类型，然后点击目标坐标
+- 通过拖放移动路径
+- 点击目标坐标点，然后点击 **...** 按钮立即插入新命令、删除当前命令或者更改命令类型
 
-### With Node.js
+##### 命令面板:
+- 点击命令类型图标可在相对坐标类型和绝对坐标类型之间切换
+- 相对坐标类型命令颜色为 **橙色**，而绝对坐标类型命令颜色为 **紫色**
+- 点击 **...** 按钮并继续点击 **删除** 按钮即可删除所选命令
+- 点击 **...** 按钮并继续点击 **插入** 按钮即可在所选命令之后插入新命令
+- 点击 **...** 按钮并继续点击 **转换为** 按钮即可将所选命令转换为新类型
 
-##### Requirements
-- [Node.js](https://nodejs.org/) v18.13 or higher.
+##### 视图:
+- 使用鼠标滚轮，或者点击 **放大** 和 **缩小** 按钮来放大/缩小视图
+- 使用拖放操作来移动视图
+- 点击 **自适应缩放** 按钮以根据路径代码自动调节视图大小
+- 还可以根据 **x**， **y**， **宽度** 和 **高度** 字段手动调节视图
 
-##### Dependencies
-Run `npm install` to retrieve all the dependencies of the project.
+##### 路径操作:
+- 使用 **缩放** 按钮缩放整个路径代码
+- 使用 **平移** 按钮平移整个路径代码
+- 使用 **旋转** 按钮旋转整个路径代码
+- 使用 **四舍五入** 按钮舍入整个路径代码中的数值
+- 使用 **转换为相对路径** 或 **转换为绝对路径** 按钮将全部命令转换为绝对类型或相对类型
 
-##### Development server
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+##### 快捷键:
+- 按下 **m**， **l**， **v**， **h**， **c**， **s**， **q**， **t**， **a** 或 **z** 以便在所选命令后快速插入指定的新命令
+- 按下 **shift** + **m**， **l**， **v**， **h**， **c**， **s**， **q**， **t**， **a** 或 **z** 以便将所选命令转换为新类型
+- 按下 **escape** 以删除正在创建的新命令，或者取消正在进行的移动操作
+- 按下 **delete** 或 **backspace** 以删除所选命令
+- 按下 **ctrl** + **z** 或 **cmd** + **z** 以撤销
+- 按下 **ctrl** + **shift** + **z** 或 **cmd** + **shift** + **z** 以恢复
+- 移动时按下 **ctrl** 以忽略 `与网格对齐` 约束
 
-##### Build
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 在本地运行
 
-##### Running unit tests
-Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 使用 Node.js
 
-### With Docker
-Run `docker build -t svg-path-editor . && docker run -p 4200:4200 svg-path-editor` or `docker-compose up`.
+##### 前置需求
+- [Node.js](https://nodejs.org/) v18.13 或更高的版本。
 
-## Special Thanks
-Many thanks to our sponsors 🙇 !
+##### 安装依赖
+运行 `npm install` 以检索并安装该项目的全部依赖项。
+
+##### 开发服务器
+运行 `npm start` 启动开发服务器。导航至 `http://localhost:4200/` 。如果你修改了任何源代码，网页会自动重新加载。
+
+##### 构建
+运行 `npm run build` 以构建该项目。构建生成的文件将储存至 `dist/` 文件夹内。
+
+##### 运行单元测试
+运行 `npm test` 以通过 [Karma](https://karma-runner.github.io) 运行单元测试。
+
+### 使用 Docker
+运行 `docker build -t svg-path-editor . && docker run -p 4200:4200 svg-path-editor` 或 `docker-compose up` 命令。
+
+## 特别感谢
+非常感谢原项目的赞助商 🙇 !
 
 [@riovir](https://github.com/riovir), [@miniBill](https://github.com/miniBill), [@GitHub](https://github.com/GitHub), [@alexandernst](https://github.com/alexandernst), [@Filimoa](https://github.com/Filimoa), [@agrogers](https://github.com/agrogers), [@MilesTails01](https://github.com/MilesTails01), [@robetus](https://github.com/robetus), [@adcar](https://github.com/adcar), [@getsentry](https://github.com/getsentry), [@simplicitywebdesign](https://github.com/simplicitywebdesign) 😎, [@PassPilot](https://github.com/PassPilot), [@zeroin](https://github.com/zeroin), [@jholmes-dev](https://github.com/jholmes-dev), [@sh-csg](https://github.com/sh-csg), [@MarcoRudin](https://github.com/MarcoRudin), [@Oddpod](https://github.com/Oddpod), [@roboflow](https://github.com/roboflow), [@lasaldan](https://github.com/lasaldan), [@stevekerrick](https://github.com/stevekerrick), [@toth-istvan-zoltan](https://github.com/toth-istvan-zoltan), [@PBI-DataVizzle](https://github.com/PBI-DataVizzle), [@gucr](https://github.com/gucr)
