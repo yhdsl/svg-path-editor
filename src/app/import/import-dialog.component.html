@@ -1,20 +1,20 @@
-<h1 mat-dialog-title>Import shared path</h1>
+<h1 mat-dialog-title>导入共享的路径代码</h1>
 <div mat-dialog-content>
   <div style="display: flex;">
     <app-path-preview [path]="data.path ?? ''"></app-path-preview>
     <div style="padding:0 32px;">
       <p>
-        Press <b>Import</b> to import this SVG path in the editor.
+        点击<b>导入</b>按钮将共享的路径代码复制到编辑器中。
       </p>
       <p>
-        Please note it will erase any unsaved change.
+        注意，这会删除任何未保存的更改。
       </p>
     </div>
   </div>
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-raised-button (click)="onCancel()" color="primary">Discard</button>
+  <button mat-raised-button (click)="onCancel()" color="primary">丢弃</button>
   <button mat-raised-button (click)="onConfirm()" color="accent" [disabled]="false">
-    Import
+    导入
   </button>
 </div>

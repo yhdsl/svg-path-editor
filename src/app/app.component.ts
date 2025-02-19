@@ -438,8 +438,8 @@ export class AppComponent implements AfterViewInit {
       q: ['dx1', 'dy1', 'dx', 'dy'],
       T: ['x', 'y'],
       t: ['dx', 'dy'],
-      A: ['rx', 'ry', 'x-axis-rotation', 'large-arc-flag', 'sweep-flag', 'x', 'y'],
-      a: ['rx', 'ry', 'x-axis-rotation', 'large-arc-flag', 'sweep-flag', 'dx', 'dy']
+      A: ['rx', 'ry', 'x-axis-rotation (x轴旋转角度)', 'large-arc-flag (角度大小)', 'sweep-flag (弧线方向)', 'x', 'y'],
+      a: ['rx', 'ry', 'x-axis-rotation (x轴旋转角度)', 'large-arc-flag (角度大小)', 'sweep-flag (弧线方向)', 'dx', 'dy']
     };
     return labels[item.getType()][idx];
   }
