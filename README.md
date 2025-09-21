@@ -29,6 +29,7 @@
 - 点击 **...** 按钮并继续点击 **删除** 按钮即可删除所选命令
 - 点击 **...** 按钮并继续点击 **插入** 按钮即可在所选命令之后插入新命令
 - 点击 **...** 按钮并继续点击 **转换为** 按钮即可将所选命令转换为新类型
+- 点击 **...** 按钮并继续点击 **从此开始** 按钮即可重新排序路径，使得当前所选命令位于的一个
 
 ##### 视图:
 - 使用鼠标滚轮，或者点击 **放大** 和 **缩小** 按钮来放大/缩小视图
@@ -42,6 +43,8 @@
 - 使用 **旋转** 按钮旋转整个路径代码
 - 使用 **四舍五入** 按钮舍入整个路径代码中的数值
 - 使用 **转换为相对路径** 或 **转换为绝对路径** 按钮将全部命令转换为绝对类型或相对类型
+- 使用 **反转** 按钮逆序整个路径代码
+- 使用 **优化** 按钮最小化整个路径代码
 
 ##### 快捷键:
 - 按下 **m**， **l**， **v**， **h**， **c**， **s**， **q**， **t**， **a** 或 **z** 以便在所选命令后快速插入指定的新命令
@@ -51,6 +54,10 @@
 - 按下 **ctrl** + **z** 或 **cmd** + **z** 以撤销
 - 按下 **ctrl** + **shift** + **z** 或 **cmd** + **shift** + **z** 以恢复
 - 移动时按下 **ctrl** 以忽略 `与网格对齐` 约束
+
+## 库
+
+原项目的核心功能现在可以做为独立的库使用： [`svg-path-editor-lib`](https://www.npmjs.com/package/svg-path-editor-lib).
 
 ## 在本地运行
 
@@ -71,10 +78,7 @@
 ##### 运行单元测试
 运行 `npm test` 以通过 [Karma](https://karma-runner.github.io) 运行单元测试。
 
-### 使用 Docker
-运行 `docker build -t svg-path-editor . && docker run -p 4200:4200 svg-path-editor` 或 `docker-compose up` 命令。
-
 ## 特别感谢
 非常感谢原项目的赞助商 🙇 !
 
-[@riovir](https://github.com/riovir), [@miniBill](https://github.com/miniBill), [@GitHub](https://github.com/GitHub), [@alexandernst](https://github.com/alexandernst), [@Filimoa](https://github.com/Filimoa), [@agrogers](https://github.com/agrogers), [@MilesTails01](https://github.com/MilesTails01), [@robetus](https://github.com/robetus), [@adcar](https://github.com/adcar), [@getsentry](https://github.com/getsentry), [@simplicitywebdesign](https://github.com/simplicitywebdesign) 😎, [@PassPilot](https://github.com/PassPilot), [@zeroin](https://github.com/zeroin), [@jholmes-dev](https://github.com/jholmes-dev), [@sh-csg](https://github.com/sh-csg), [@MarcoRudin](https://github.com/MarcoRudin), [@Oddpod](https://github.com/Oddpod), [@roboflow](https://github.com/roboflow), [@lasaldan](https://github.com/lasaldan), [@stevekerrick](https://github.com/stevekerrick), [@toth-istvan-zoltan](https://github.com/toth-istvan-zoltan), [@PBI-DataVizzle](https://github.com/PBI-DataVizzle), [@gucr](https://github.com/gucr)
+[@riovir](https://github.com/riovir), [@miniBill](https://github.com/miniBill), [@GitHub](https://github.com/GitHub), [@alexandernst](https://github.com/alexandernst), [@Filimoa](https://github.com/Filimoa), [@agrogers](https://github.com/agrogers), [@MilesTails01](https://github.com/MilesTails01), [@robetus](https://github.com/robetus), [@adcar](https://github.com/adcar), [@getsentry](https://github.com/getsentry), [@simplicitywebdesign](https://github.com/simplicitywebdesign) 😎, [@PassPilot](https://github.com/PassPilot), [@zeroin](https://github.com/zeroin), [@jholmes-dev](https://github.com/jholmes-dev), [@sh-csg](https://github.com/sh-csg), [@MarcoRudin](https://github.com/MarcoRudin), [@Oddpod](https://github.com/Oddpod), [@roboflow](https://github.com/roboflow), [@lasaldan](https://github.com/lasaldan), [@stevekerrick](https://github.com/stevekerrick), [@toth-istvan-zoltan](https://github.com/toth-istvan-zoltan), [@PBI-DataVizzle](https://github.com/PBI-DataVizzle), [@gucr](https://github.com/gucr), [@Guiorgy](https://github.com/Guiorgy), [@LeaVerou](https://github.com/LeaVerou)
