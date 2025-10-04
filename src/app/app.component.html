@@ -501,17 +501,25 @@
             插入
         </button>
         <button mat-menu-item [matMenuTriggerFor]="appCreate" [matMenuTriggerData]="{item:item, idx:idx, convert:true}">
-            <mat-icon>swap_horiz</mat-icon>
+            <mat-icon>autorenew</mat-icon>
             转换为
         </button>
         <button mat-menu-item (click)="item.setRelative(!item.relative); afterModelChange();">
-            <mat-icon>swap_horiz</mat-icon>
+            <mat-icon>autorenew</mat-icon>
             <ng-container *ngIf="item.relative">使用绝对路径</ng-container>
             <ng-container *ngIf="!item.relative">使用相对路径</ng-container>
         </button>
         <button mat-menu-item (click)="useAsOrigin(item)" [disabled]="!canUseAsOrigin(item)">
             <mat-icon>vertical_align_top</mat-icon>
             从此开始
+        </button>
+        <button mat-menu-item (click)="useAsOrigin(item, true)" [disabled]="!canUseAsOrigin(item) || !hasSubPaths()">
+            <mat-icon>vertical_align_top</mat-icon>
+            从此开始子路径
+        </button>
+        <button mat-menu-item (click)="reverseSubPath(item)" [disabled]="!hasSubPaths()">
+            <mat-icon>swap_vert</mat-icon>
+            翻转子路径
         </button>
         <button mat-menu-item (click)="delete(item)" [disabled]="!canDelete(item)">
             <mat-icon>delete</mat-icon> 删除
