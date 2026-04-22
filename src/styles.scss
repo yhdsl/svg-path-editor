@@ -96,6 +96,7 @@ button.mat-mini-fab .mat-button-wrapper {
 
 /* app */
 .row {
+    min-height: 24px;
     --mdc-checkbox-state-layer-size:20px;
     .mat-mdc-checkbox {
         margin:0;

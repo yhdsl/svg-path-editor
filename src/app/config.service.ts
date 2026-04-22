@@ -43,7 +43,6 @@ export class ConfigService {
   @save() showTicks = false;
   @save() minifyOutput = false;
   @save() snapToGrid = true;
-  @save() tickInterval = 5;
   @save() decimalPrecision = 3;
 }
 

@@ -129,22 +129,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <mat-checkbox [(ngModel)]="cfg.showTicks" style="flex:1">显示刻度</mat-checkbox>
-                    <div class="input-block" style="flex:1"
-                        [ngClass]="{'disabled': !cfg.showTicks }"
-                    >
-                        <label>刻度间隔</label>
-                        <input
-                            class="app-input"
-                            appFormatter
-                            formatterType="positive-integer"
-                            [(numberValue)]="cfg.tickInterval"
-                            [disabled]="!cfg.showTicks">
-                    </div>
-                </div>
-                <div class="row">
                     <mat-checkbox [(ngModel)]="cfg.filled" style="flex:1">填充</mat-checkbox>
                     <mat-checkbox [(ngModel)]="cfg.preview" style="flex:1">预览</mat-checkbox>
+                </div>
+                <div class="row">
+                    <mat-checkbox [(ngModel)]="cfg.showTicks" style="flex:1">显示刻度</mat-checkbox>
                     <mat-checkbox [ngModel]="cfg.minifyOutput" (ngModelChange)="cfg.minifyOutput=$event;afterModelChange()" style="flex:1">精简路径代码</mat-checkbox>
                 </div>
 
@@ -466,12 +455,10 @@
             [preview]="cfg.preview"
             [filled]="cfg.filled"
             [showTicks]="cfg.showTicks"
-            [tickInterval]="cfg.tickInterval"
             (afterModelChange)="afterModelChange()"
             (dragging)="setIsDragging($event)"
             (canvasWidthChange)="canvasWidth = $event || canvasWidth"
             (canvasHeightChange)="canvasHeight = $event"
-            (emptyCanvas)="isLeftPanelOpened = false"
             (viewPort)="updateViewPort($event.x, $event.y, $event.w, $event.h, $event.force)"
             [editImages]="isEditingImages"
             [images]="images"

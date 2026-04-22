@@ -43,7 +43,6 @@ export class CanvasComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() preview = false;
   @Input() filled = false;
   @Input() showTicks = false;
-  @Input() tickInterval = 1;
   @Input() draggedIsNew = false;
   @Input() images: Image[] = [];
   @Input() editImages = true;
@@ -53,8 +52,6 @@ export class CanvasComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() viewPort = new EventEmitter<{x: number, y: number, w: number, h: number | null, force?: boolean}>();
   @Output() hoverPosition = new EventEmitter<{x: number, y: number} | undefined>();
 	@Output() cursorPosition = new EventEmitter<Point & {decimals?: number} | undefined>();
-
-  @Output() emptyCanvas = new EventEmitter<void>();
 
   _canvasWidth = 0;
   @Output() canvasWidthChange = new EventEmitter<number>();
@@ -84,6 +81,7 @@ export class CanvasComponent implements OnInit, OnChanges, AfterViewInit {
   draggedImageType = 0;
   xGrid: number[] = [];
   yGrid: number[] = [];
+  gridLabelStep = 1;
 
   // Utility functions
   min = Math.min;
@@ -101,10 +99,10 @@ export class CanvasComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.refreshCanvasSize(true);
+      this.refreshCanvasSize();
     });
     window.addEventListener('resize', () => {
-      this.refreshCanvasSize(true);
+      this.refreshCanvasSize();
     });
 
     // Following line is a workaround for a bug in Safari preventing the Wheel events to be fired:
@@ -152,11 +150,8 @@ export class CanvasComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
 
-  refreshCanvasSize(emitEmptyCanvas = false) {
+  refreshCanvasSize() {
     const rect = this.canvas.nativeElement.parentNode.getBoundingClientRect();
-    if (rect.width === 0 && emitEmptyCanvas) {
-      this.emptyCanvas.emit();
-    }
     this.canvasWidth = rect.width;
     this.canvasHeight = rect.height;
 
@@ -169,14 +164,39 @@ export class CanvasComponent implements OnInit, OnChanges, AfterViewInit {
     });
   }
 
+  round(value: number): number {
+    return Math.round(value * 1e10) / 1e10;
+  }
+
+  isEvenTick(value: number): boolean {
+    return Number.isInteger(this.round(value / this.gridLabelStep));
+  }
+
   refreshGrid() {
-    if (5 * this.viewPortWidth <= this.canvasWidth) {
-      this.xGrid = Array(Math.ceil(this.viewPortWidth) + 1).fill(null).map((_, i) => Math.floor(this.viewPortX) + i);
-      this.yGrid = Array(Math.ceil(this.viewPortHeight) + 1).fill(null).map((_, i) => Math.floor(this.viewPortY) + i);
-    } else {
-      this.xGrid = [];
-      this.yGrid = [];
-    }
+    const niceStep = (minPx: number): number => {
+      const raw = this.canvasWidth > 0 ? this.viewPortWidth / (this.canvasWidth / minPx) : 1;
+      const e = Math.floor(Math.log10(Math.max(raw, 1e-10)));
+      const p = Math.pow(10, e);
+      if (raw <= p){
+        return p;
+      } else if (raw <= 2 * p) {
+        return 2 * p;
+      } else if (raw <= 5 * p) {
+        return 5 * p;
+      }
+      return 10 * p;
+    };
+
+    const step = niceStep(8);       // fine grid lines (~4-5× denser than labels)
+    this.gridLabelStep = niceStep(40); // tick labels
+
+    const xStart = Math.floor(this.viewPortX / step) * step;
+    const xCount = Math.ceil(this.viewPortWidth / step) + 2;
+    this.xGrid = Array.from({length: xCount}, (_, i) => this.round(xStart + i * step));
+
+    const yStart = Math.floor(this.viewPortY / step) * step;
+    const yCount = Math.ceil(this.viewPortHeight / step) + 2;
+    this.yGrid = Array.from({length: yCount}, (_, i) => this.round(yStart + i * step));
   }
 
   eventToLocation(event: MouseEvent | TouchEvent, idx = 0): {x: number, y: number} {
