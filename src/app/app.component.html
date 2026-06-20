@@ -143,11 +143,11 @@
                 <div class="row path-operations-grid">
                     <div class="input-block" style="flex:1">
                         <label>X 缩放参数</label>
-                        <input appFormatter [(numberValue)]="scaleX" class="app-input" >
+                        <input appFormatter [(numberValue)]="scaleX" class="app-input" (keydown.enter)="scale(scaleX, scaleY)" >
                     </div>
                     <div class="input-block" style="flex:1">
                         <label>Y 缩放参数</label>
-                        <input appFormatter [(numberValue)]="scaleY" class="app-input">
+                        <input appFormatter [(numberValue)]="scaleY" class="app-input" (keydown.enter)="scale(scaleX, scaleY)">
                     </div>
                     <button
                         mat-flat-button
@@ -162,11 +162,11 @@
                 <div class="row path-operations-grid">
                     <div class="input-block" style="flex:1">
                         <label>X 平移参数</label>
-                        <input appFormatter [(numberValue)]="translateX" class="app-input">
+                        <input appFormatter [(numberValue)]="translateX" class="app-input" (keydown.enter)="translate(translateX, translateY)" >
                     </div>
                     <div class="input-block" style="flex:1">
                         <label>Y 平移参数</label>
-                        <input appFormatter [(numberValue)]="translateY" class="app-input">
+                        <input appFormatter [(numberValue)]="translateY" class="app-input" (keydown.enter)="translate(translateX, translateY)" >
                     </div>
                     <button
                         mat-flat-button
@@ -181,15 +181,15 @@
                 <div class="row path-operations-grid4">
                     <div class="input-block" style="flex:1">
                         <label>原点 X</label>
-                        <input appFormatter [(numberValue)]="rotateX" class="app-input">
+                        <input appFormatter [(numberValue)]="rotateX" class="app-input" (keydown.enter)="rotate(rotateX, rotateY, rotateAngle)">
                     </div>
                     <div class="input-block" style="flex:1">
                         <label>原点 Y</label>
-                        <input appFormatter [(numberValue)]="rotateY" class="app-input">
+                        <input appFormatter [(numberValue)]="rotateY" class="app-input" (keydown.enter)="rotate(rotateX, rotateY, rotateAngle)">
                     </div>
                     <div class="input-block" style="flex:1">
                         <label>旋转角度</label>
-                        <input appFormatter suffix="°" [(numberValue)]="rotateAngle" class="app-input">
+                        <input appFormatter suffix="°" [(numberValue)]="rotateAngle" class="app-input" (keydown.enter)="rotate(rotateX, rotateY, rotateAngle)">
                     </div>
                     <button
                         mat-flat-button
@@ -204,7 +204,7 @@
                 <div class="row path-operations-grid">
                     <div class="input-block" style="grid-column: span 2;">
                         <label>小数位数</label>
-                        <input appFormatter formatterType="positive-integer" [(numberValue)]="roundValuesDecimals" class="app-input">
+                        <input appFormatter formatterType="positive-integer" [(numberValue)]="roundValuesDecimals" class="app-input" (keydown.enter)="roundValues(roundValuesDecimals)">
                     </div>
                     <button
                         mat-flat-button
